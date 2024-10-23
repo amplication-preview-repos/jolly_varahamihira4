@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Employee {
+  city        String?
+  country     String?
+  createdAt   DateTime            @default(now())
+  designation String?
+  gender      EnumEmployeeGender?
+  id          String              @id @default(cuid())
+  name        String?
+  updatedAt   DateTime            @updatedAt
+}
+
+enum EnumEmployeeGender {
+  Option1
+}
